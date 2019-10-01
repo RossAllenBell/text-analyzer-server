@@ -1,0 +1,28 @@
+<p>
+  <a href="/">back</a>
+</p>
+
+<p>
+  File name: <%= @analysis.file_name %>
+</p>
+<p>
+  Exlcude common: <%= @exclude_common %>
+</p>
+
+<table>
+  <tr>
+    <td>Word</td>
+    <td>Count</td>
+  </tr>
+  <% @word_frequencies.each do |word, count| %>
+    <tr>
+      <td><%= word %></td>
+      <td><%= count %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p>Original Text...</p>
+<p>
+  <%= @original_text %>
+</p>

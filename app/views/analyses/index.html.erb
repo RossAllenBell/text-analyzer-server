@@ -1,0 +1,26 @@
+<%= form_with url: '/analyses', html: { multipart: true }, method: 'post' do |f| %>
+
+  <%= f.file_field :file_to_analyze %>
+  <br />
+  <%= f.check_box :exclude_common %> Exclude common English
+  <br />
+  <%= submit_tag('Analyze') %>
+
+<% end %>
+
+<p>Previous Analyses:</p>
+
+<table>
+  <tr>
+    <td>Date</td>
+    <td>Filename</td>
+    <td>Exclude Common</td>
+  </tr>
+  <% @last_ten.each do |analysis| %>
+    <tr>
+      <td><%= analysis.created_at %></td>
+      <td><%= analysis.file_name %></td>
+      <td><%= analysis.data.fetch('exclude_common') %></td>
+    </tr>
+  <% end %>
+</table>
